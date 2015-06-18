@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket Breadboard Example - Tic Tac Toe</title>
+    <link rel="shortcut icon" href="/ws-breadboard.png" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+      #wrapper {
+        width: 100%;
+        /* whatever width you want */
+        display: inline-block;
+        position: relative;
+      }
+      #wrapper:after {
+        padding-top: 100%;
+        /* 16:9 ratio */
+        display: block;
+        content: '';
+      }
+    
+      #board {
+        width: 35vw;
+        margin:auto;
+      }
+      [data-y] {
+        display:block;
+        padding: 0;
+        margin: 0;
+        list-style:none;
+      }
+      [data-x] {
+        float: left;
+      }
+      [data-x] a {
+        margin: .5vw;
+        display:inline-block;
+        color: #800;
+        background-color: #eee;
+        width: 10vw;
+        height: 10vw;
+        text-align:center;
+        line-height: 10vw;
+        font-size: 8vw;
+        vertical-align: middle;
+      }
+      [data-x] a:hover, [data-x] a:focus {
+        text-decoration: none;
+        box-shadow: 2px 2px 10px 0px rgba(0,0,0,.5);
+      }
+      
+      @media (max-width: 970px) {
+        #board { width : 70vw; }
+        [data-x] a  { width : 20vw; height: 20vw; font-size: 16vw; line-height: 20vw;}
+      }
+      
+    </style>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>WebSocket Breadboard Example - Tic Tac Toe</h1>
+      
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div id="wrapper">
+            <div id="board">
+              <ul class="clearfix" data-y="0">
+                <li data-x="0"><a href="#"></a></li>
+                <li data-x="1"><a href="#"></a></li>
+                <li data-x="2"><a href="#"></a></li>
+              </ul>
+
+              <ul class="clearfix" data-y="1">
+                <li data-x="0"><a href="#"></a></li>
+                <li data-x="1"><a href="#"></a></li>
+                <li data-x="2"><a href="#"></a></li>
+              </ul>
+
+              <ul class="clearfix" data-y="2">
+                <li data-x="0"><a href="#"></a></li>
+                <li data-x="1"><a href="#"></a></li>
+                <li data-x="2"><a href="#"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

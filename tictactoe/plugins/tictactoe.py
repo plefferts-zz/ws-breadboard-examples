@@ -1,16 +1,26 @@
-import logging, sys
+import logging
 
 board = [['', '', ''], ['', '', ''], ['', '', '']]
 
+connections = []
+
 def main(server):
     def onConnection(connection):
-        connection.send_json(board)
+        connections.append(connection)
+        connection.send_json({
+            'board' : board
+        })
         connection.on('set_tile', onSetTile)
-    
+        connection.on('connection_closed', onClose)
+
+    def onClose(connection):
+        connections.remove(connection)
+
     def onSetTile(message):
-        logging.info('message')
-        logging.info(message)
-        logging.info(message['x'])
-        board[message['x']][message['y']] = message['value']
+        board[message['y']][message['x']] = message['value']
+        for connection in connections:
+            connection.send_json({
+                'update' : message
+            })
 
     server.on('connection', onConnection)
